@@ -15,9 +15,6 @@ public class LinesCounterCallable implements Callable<Integer> {
         File file = new File(fileName);
         int linesNum = 0 ;
         try {
-            if (!file.exists()) {
-                throw new FileNotFoundException("File has not been found.");
-            }
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while (bufferedReader.readLine() != null) {

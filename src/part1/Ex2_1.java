@@ -1,6 +1,7 @@
 package part1;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
@@ -26,11 +27,10 @@ public class Ex2_1 {
             currentFileName = "file_" + i ;
             currentFile = new File(currentFileName) ;
             try {
-                if(!currentFile.exists()){
-                    currentFile.createNewFile() ;
-                }else{
-                    throw new IOException("File already exists. couldn't make file with name: " + currentFileName) ;
+                if(currentFile.exists()){
+                    currentFile.delete() ;
                 }
+                currentFile.createNewFile() ;
                 fileWriter = new FileWriter(currentFile.getName(), true) ;
                 printWriter = new PrintWriter(fileWriter) ;
                 numberOfLines = rand.nextInt(bound) ;
@@ -45,10 +45,10 @@ public class Ex2_1 {
                 e.printStackTrace();
             }
         }
-        System.out.println("Lines: " + sumLines);
         return fileNames ;
     }
     public static int getNumOfLines(String[] fileNames){
+        long startTime = System.currentTimeMillis() ;
         File currentFile = null ;
         FileReader fileReader = null ;
         BufferedReader bufferedReader = null ;
@@ -71,9 +71,13 @@ public class Ex2_1 {
                 e.printStackTrace();
             }
         }
+        long endTime = System.currentTimeMillis() ;
+        long executionTime = endTime - startTime ;
+        System.out.println("The getNumOfLines method runs in: " + executionTime + " Milliseconds.");
         return numOfLines ;
     }
     public int getNumOfLinesThreads(String[] fileNames){
+        long startTime = System.currentTimeMillis() ;
         LinesCounterThread currentThread = null ;
         AtomicInteger atomicInt = new AtomicInteger(0) ;
         AtomicInteger numOfThreadsFinished = new AtomicInteger(0) ;
@@ -85,13 +89,17 @@ public class Ex2_1 {
         while(numOfThreadsFinished.get() != numOfFiles){
 
         }
+        long endTime = System.currentTimeMillis() ;
+        long executionTime = endTime - startTime ;
+        System.out.println("The getNumOfLinesThreads method runs in: " + executionTime + " Milliseconds.");
         return atomicInt.get() ;
     }
     public int getNumOfLinesThreadPool(String[] fileNames){
+        long startTime = System.currentTimeMillis() ;
         int totalNumOfLines = 0 ;
         int numOfFiles = fileNames.length ;
         ExecutorService threadPool = Executors.newFixedThreadPool(numOfFiles) ;
-        List<Future<Integer>> futureList = null ;
+        List<Future<Integer>> futureList = new ArrayList<>();
         for(int i = 0 ; i < numOfFiles ; i++){
             LinesCounterCallable task = new LinesCounterCallable(fileNames[i]) ;
             futureList.add(threadPool.submit(task)) ;
@@ -106,6 +114,26 @@ public class Ex2_1 {
             }
         }
         threadPool.shutdown();
+        long endTime = System.currentTimeMillis() ;
+        long executionTime = endTime - startTime ;
+        System.out.println("The getNumOfLinesThreadPool method runs in: " + executionTime + " Milliseconds.");
         return totalNumOfLines ;
+    }
+    
+    public void cleanFiles(){
+        String name = "file_" ;
+        int i = 0 ;
+        boolean keepGoing = true ;
+        File file = null ;
+        while(keepGoing){
+            file = new File(name + i) ;
+            if(!file.exists()){
+                keepGoing = false ;
+            }else{
+                file.delete() ;
+            }
+            i++ ;
+        }
+        System.out.println("Cleaned: " + i + "Files.");
     }
 }
