@@ -42,7 +42,6 @@ public class CustomExecutor extends ThreadPoolExecutor {
             task = Task.createTask(task) ;
         }
         Task t = (Task) task ;
-        System.out.println("Added priority: " + t.getType());
         maxPriorityHolder.addValue(t.getType());
         return super.submit(task);
     }
@@ -70,7 +69,6 @@ public class CustomExecutor extends ThreadPoolExecutor {
     protected void beforeExecute(Thread t, Runnable r) {
         super.beforeExecute(t, r);
         CustomFutureTask task = (CustomFutureTask) r ;
-        System.out.println("Removed priority: " + task.getPriority());
         maxPriorityHolder.removeValue(task.getPriority()) ;
     }
 
