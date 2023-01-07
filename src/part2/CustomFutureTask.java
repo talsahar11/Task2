@@ -1,6 +1,5 @@
 package part2;
 
-import java.util.Comparator;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
@@ -11,8 +10,8 @@ import java.util.concurrent.FutureTask;
  * @param <T> A Generic type will be declared at the class Creation.
  */
 public class CustomFutureTask<T> extends FutureTask<T> implements Comparable<CustomFutureTask<T>> {
-    private int priority ;
-    private String name ;
+    private final int priority ;
+    private final String name ;
 
     /**
      * Constructor - create a new CustomFutureTask, set the priority and the task name of the given task.
@@ -50,7 +49,7 @@ public class CustomFutureTask<T> extends FutureTask<T> implements Comparable<Cus
      *         - 1: if the current priority is more than the other's priority.
      */
     @Override
-    public int compareTo(CustomFutureTask<T> other) {
+    public int compareTo(CustomFutureTask other) {
         return Integer.compare(this.priority, other.getPriority()) ;
     }
 }

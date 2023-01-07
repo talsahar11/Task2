@@ -16,7 +16,7 @@ import java.util.concurrent.*;
  *    method.
  */
 public class CustomExecutor extends ThreadPoolExecutor {
-    private MaxPriorityHolder maxPriorityHolder = new MaxPriorityHolder() ;
+    private final MaxPriorityHolder maxPriorityHolder = new MaxPriorityHolder() ;
 
     /**
      * Constructor - creates the CustomExecutor with the pre-defined: corePoolSize, maxPoolSize, keepAliveTime, and
@@ -41,10 +41,9 @@ public class CustomExecutor extends ThreadPoolExecutor {
         if(!(task instanceof Task)){
             task = Task.createTask(task) ;
         }
-        if(this.getCorePoolSize() <= this.getActiveCount()){
-            Task t = (Task) task ;
-            maxPriorityHolder.addValue(((Task<T>) task).getType());
-        }
+        Task t = (Task) task ;
+        System.out.println("Added priority: " + t.getType());
+        maxPriorityHolder.addValue(t.getType());
         return super.submit(task);
     }
 
@@ -71,6 +70,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
     protected void beforeExecute(Thread t, Runnable r) {
         super.beforeExecute(t, r);
         CustomFutureTask task = (CustomFutureTask) r ;
+        System.out.println("Removed priority: " + task.getPriority());
         maxPriorityHolder.removeValue(task.getPriority()) ;
     }
 
