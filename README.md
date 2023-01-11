@@ -40,6 +40,7 @@ It includes the following classes:<br />
 •	`Ex2_1`: main class that creates a number of text files and counts the total number of lines in all the files concurrently using threads. <br />
 •	`LinesCounterThread`: a thread class that counts the number of lines in a single file.<br />
 •	`LinesCounterCallable`: a callable class that counts the number of lines in a single file and returns the result. <br />
+![Part1](https://user-images.githubusercontent.com/52352606/211913893-eb67b57b-233f-4b25-8689-66eb581d2e93.png) <br />
 
 **Part 2**: <br />
 contains the implementation of a custom concurrent task manager that executes tasks concurrently using a custom thread pool executor. <br />
@@ -48,6 +49,7 @@ It includes the following classes:<br />
 •	`CustomFutureTask`: a custom future task that wraps a task and includes a priority field to allow for priority execution of tasks.<br />
 •	`MaxPriorityHolder`: a class that keeps track of the maximum priority value of submitted tasks.<br />
 •	`Task`: a task class that represents a unit of work to be executed concurrently. It includes a task type field to allow for different treatment of tasks based on their type.<br />
+![Part2](https://user-images.githubusercontent.com/52352606/211913977-53b5e95b-fcc1-422a-81c5-ce6c5ec4aa0e.png)</br >
 
 **Part 3:** Test unit.<br />
 
