@@ -56,7 +56,7 @@ It includes the following classes:<br />
 *Ex2_1* is a utility class that contains methods for creating a specified number of text files with a random number of lines and a specified upper bound, and for cleaning up the created files. It also contains a method for counting the total number of lines in a set of files using threads. <br />
 ###### It has the following capabilities: <br />
 1. 	Create n text files, and print to them random number of lines. <br />
-2. .	Calculate the total number of lines of all the created files one by one. <br />
+2.  Calculate the total number of lines of all the created files one by one. <br />
 3. 	Calculate the total number of lines of all the created files by running concurrently multiple threads. <br />
 4. 	Calculate the total number of lines of all the created files by running tasks concurrently by a thread pool. <br />
 
