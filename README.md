@@ -32,14 +32,14 @@ To use this project, import it as a Maven project into your preferred Java devel
 ## Package structure <br />
 The project is divided into the following packages:
 
-**	Part 1:** <br />
+**Part 1:** <br />
 Contains the implementation of a simple concurrent task manager that executes tasks concurrently using threads.
 It includes the following classes:
 •	`Ex2_1`: main class that creates a number of text files and counts the total number of lines in all the files concurrently using threads.
 •	`LinesCounterThread`: a thread class that counts the number of lines in a single file.
 •	`LinesCounterCallable`: a callable class that counts the number of lines in a single file and returns the result.
 
-**	Part 2**: <br />
+**Part 2**: <br />
 contains the implementation of a custom concurrent task manager that executes tasks concurrently using a custom thread pool executor. <br />
 It includes the following classes:
 •	`CustomExecutor`: a custom thread pool executor that executes tasks concurrently using a priority queue.
@@ -47,7 +47,7 @@ It includes the following classes:
 •	`MaxPriorityHolder`: a class that keeps track of the maximum priority value of submitted tasks.
 •	`Task`: a task class that represents a unit of work to be executed concurrently. It includes a task type field to allow for different treatment of tasks based on their type.
 
-•	**Part 3:** Test unit.
+**Part 3:** Test unit.
 
 ## Packages and Classes Descriptions 
 ### part1 package
