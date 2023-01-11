@@ -200,10 +200,12 @@ It also checks if the values of type and task name are correct and it's checks t
 
 ## Examples of Use  
 1.	n=100000, bound =100
-![](C:\Users\batel\OneDrive - Ariel University\שנה ב-2\מונחי עצמים\Task2\1.jpeg)
+![1](https://user-images.githubusercontent.com/93344134/211813824-8c4d743a-8c25-4dde-b05f-76162205a382.jpeg)
+
  
 2.	n=1000, bound=100000
-![](C:\Users\batel\OneDrive - Ariel University\שנה ב-2\מונחי עצמים\Task2\2.jpeg)
+![2](https://user-images.githubusercontent.com/93344134/211813867-8189fc2d-56a4-4bcf-8b97-16cfd7894c1d.jpeg)
+
  
 ## Acknowledgements\Bibliography
 •	OOP Course 2023 at Ariel University.
