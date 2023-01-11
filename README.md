@@ -1,18 +1,18 @@
 # Task2- Concurrent Task Manager
 
-## Table of Contents
-•	Introduction
-•	Authors
-•	Technologies
-•	Launch
-•	Package structure
-•	Packages and Classes Descriptions
-•	Test
-•	Examples of Use 
-•	Acknowledgements\Bibliography
-•	Contact
+## Table of Contents <br />
+•	Introduction <br />
+•	Authors <br />
+•	Technologies<br />
+•	Launch <br />
+•	Package structure <br />
+•	Packages and Classes Descriptions <br />
+•	Test <br />
+•	Examples of Use <br />
+•	Acknowledgements\Bibliography <br />
+•	Contact <br />
 
-## Introduction
+## Introduction <br />
 The Concurrent Task Manager is a project that allows the creation and execution of tasks concurrently. It includes a custom thread pool executor and a task object that can be submitted to the executor for execution.
 The aim of this project is to implement concurrent solutions to the following tasks:
 1.	Create a specified number of text files, each containing a specified number of random lines of text.
