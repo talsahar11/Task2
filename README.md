@@ -23,8 +23,8 @@ The aim of this project is to implement concurrent solutions to the following ta
 Batel Cohen & Tal sahar
 
 ## Technologies <br />
-•	Java 11
-•	JUnit 5
+•	Java 11 <br />
+•	JUnit 5 <br />
 
 ## Launch <br />
 To use this project, import it as a Maven project into your preferred Java development environment and run the tests in the tests package to ensure that everything is working as expected. 
