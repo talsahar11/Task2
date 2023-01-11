@@ -21,7 +21,8 @@ The aim of this project is to implement concurrent solutions to the following ta
 3.	Implement a custom thread pool and a custom future task. <br />
 
 ## Authors <br />
-Batel Cohen & Tal sahar
+- [@Batel Cohen](https://github.com/BatelCohen7)
+- [@tal sahar](https://github.com/talsahar11)
 
 ## Technologies <br />
 •	Java 11 <br />
