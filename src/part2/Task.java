@@ -10,7 +10,7 @@ import java.util.concurrent.Callable;
  * CreateTask(Callable callable, TaskType type).
  * @param <T> - A Generic type will be declared at the class Creation.
  */
-public class Task<T> extends CustomExecutor implements Callable<T> {
+public class Task<T> implements Callable<T> {
     static int taskNum = 0 ;
     private String taskName = null ;
     private final TaskType type ;

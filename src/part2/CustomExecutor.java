@@ -21,11 +21,14 @@ public class CustomExecutor extends ThreadPoolExecutor {
     /**
      * Constructor - creates the CustomExecutor with the pre-defined: corePoolSize, maxPoolSize, keepAliveTime, and
      * Priority queue.
+     * The property allowCoreThreadTimeOut is also being set to true to enable the ThreadPool to execute tasks which
+     * has been queued before it shuts down.
      */
     public CustomExecutor() {
         super(Runtime.getRuntime().availableProcessors()/2,
                 Runtime.getRuntime().availableProcessors() - 1, 300, TimeUnit.MILLISECONDS
                 , new PriorityBlockingQueue<>());
+        this.allowCoreThreadTimeOut(true);
     }
 
     /**
@@ -92,4 +95,5 @@ public class CustomExecutor extends ThreadPoolExecutor {
     public Integer getMaxPriority(){
         return maxPriorityHolder.getLowestValue() ;
     }
+
 }

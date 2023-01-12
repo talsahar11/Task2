@@ -189,6 +189,8 @@ This is a set of JUnit tests for a class called *CustomExecutor*. <br />
 •	Test that the `submit` method works as expected, where it should return a future object that can be used to retrieve the result. <br />
 •	Test that tasks are stored in priority queue and are in the correct order according to their task types. <br />
 •	Test that the properties of the executor are set correctly. <br />
+•   Test that the `shoutdown` method is blocking from submitting new tasks to the executor while executing all the remaining tasks from the queue and the current running ones.<br/>
+•   Test that the `shutdown` method has worked as expected, and that the executor is terminated.
 
 **CustomFutureTaskTest class** <br />
 This is a set of JUnit tests for a class called *CustomFutureTask*. <br />

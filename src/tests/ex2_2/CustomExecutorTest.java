@@ -9,8 +9,7 @@ import part2.TaskType;
 import java.util.concurrent.*;
 
 import static java.lang.Thread.sleep;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomExecutorTest {
     private final CustomExecutor executor ;
@@ -48,19 +47,19 @@ public class CustomExecutorTest {
             sleep(1);
             return "Task 2 has been executed";
         }, TaskType.IO);
-        Task<Boolean> task3 = Task.createTask(() -> {
+        Task<Integer> task3 = Task.createTask(() -> {
             sleep(1);
             return 3;
         });
-        Task<Integer> task4 = Task.createTask(() -> {
+        Task<Float> task4 = Task.createTask(() -> {
             sleep(1);
             return 0.01223;
         });
-        Task<Float> task5 = Task.createTask(() -> {
+        Task<Integer> task5 = Task.createTask(() -> {
             sleep(1);
             return 5;
         }, TaskType.COMPUTATIONAL);
-        Task<Integer> task6 = Task.createTask(() -> {
+        Task<Float> task6 = Task.createTask(() -> {
             sleep(1);
             return 0.333333;
         }, TaskType.IO);
@@ -97,5 +96,76 @@ public class CustomExecutorTest {
         assertEquals(corePoolSize, executor.getCorePoolSize());
         assertEquals(maxPoolSize, executor.getMaximumPoolSize());
         assertEquals(keepAlive, executor.getKeepAliveTime(timeUnit));
+    }
+
+    @Test
+    void testShutdown() throws InterruptedException {
+        Task<String> task0 = Task.createTask(() -> {
+            sleep(1);
+            return "Task 0 has been executed.";
+        }, TaskType.OTHER);
+        Task<Boolean> task1 = Task.createTask(() -> {
+            sleep(1);
+            return true;
+        }, TaskType.COMPUTATIONAL);
+        Task<String> task2 = Task.createTask(() -> {
+            sleep(1);
+            return "Task 2 has been executed";
+        }, TaskType.IO);
+        Task<Integer> task3 = Task.createTask(() -> {
+            sleep(1);
+            return 3;
+        });
+        Task<Float> task4 = Task.createTask(() -> {
+            sleep(1);
+            return 0.01223;
+        });
+        Task<Integer> task5 = Task.createTask(() -> {
+            sleep(1);
+            return 5;
+        }, TaskType.COMPUTATIONAL);
+        Task<Float> task6 = Task.createTask(() -> {
+            sleep(1);
+            return 0.333333;
+        }, TaskType.IO);
+        Task<Double> task7 = Task.createTask(() -> {
+            sleep(1);
+            return 0.333333;
+        }, TaskType.IO);
+        Task<StringBuilder> task8 = Task.createTask(() -> {
+            sleep(1);
+            return new StringBuilder("Hello") ;
+        }, TaskType.OTHER);
+        Task<String> task9 = Task.createTask(() -> {
+            sleep(1);
+            return "Hello";
+        }, TaskType.COMPUTATIONAL);
+
+
+        Future<String> future0 = executor.submit(task0) ;
+        Future<Boolean> future1 = executor.submit(task1) ;
+        Future<String> future2 = executor.submit(task2) ;
+        Future<Integer> future3 = executor.submit(task3) ;
+        Future<Float> future4 = executor.submit(task4) ;
+        Future<Integer> future5 = executor.submit(task5) ;
+        Future<Float> future6 = executor.submit(task6) ;
+        Future<Double> future7 = executor.submit(task7) ;
+        Future<StringBuilder> future8 = executor.submit(task8) ;
+
+        executor.shutdown();
+        assertThrows(RejectedExecutionException.class, () -> {
+            executor.submit(task9) ;
+        });
+        Thread.sleep(5);
+        assertTrue(future0.isDone());
+        assertTrue(future1.isDone());
+        assertTrue(future2.isDone());
+        assertTrue(future3.isDone());
+        assertTrue(future4.isDone());
+        assertTrue(future5.isDone());
+        assertTrue(future6.isDone());
+        assertTrue(future7.isDone());
+        assertTrue(future8.isDone());
+        assertTrue(executor.isShutdown());
     }
 }
